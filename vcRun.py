@@ -20,17 +20,19 @@ import vc_escalar
 import vc_pixelSort
 import vc_faceDetect
 import vc_channelShift
+import vc_filtragemMedia
+import vc_gaussian
 # Load an color image in grayscale
 
 if __name__ == "__main__":
-    filename = "imgs/big3.jpg"
+    filename = "imgs/pedro.jpg"
     filename2 = "imgs/cat.jpg"
     fator = [4,8] #fator de amostragem
     cores = [2,8,16] #numero de cores da quantização
     names = []
 
 
-    vc_faceDetect.detect(filename)
+    #vc_faceDetect.detect(filename)
 
     """ img = cv2.imread(filename)
     
@@ -46,3 +48,9 @@ if __name__ == "__main__":
     name, extension = os.path.splitext(filename)
     newname = "{name}-ChannelSHift{ext}".format(name=name, ext=extension)
     cv2.imwrite(newname, img) """
+    """ vc_filtragemMedia.aplicarFiltro(filename, 3)
+    vc_filtragemMedia.aplicarFiltro(filename, 5)
+    vc_filtragemMedia.aplicarFiltro(filename, 9) """
+
+    vc_gaussian.aplicarFiltro(filename)
+    
