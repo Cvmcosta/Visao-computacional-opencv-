@@ -22,6 +22,9 @@ import vc_faceDetect
 import vc_channelShift
 import vc_filtragemMedia
 import vc_gaussian
+import vc_negativo
+import vc_contraste
+import vc_gama
 # Load an color image in grayscale
 
 if __name__ == "__main__":
@@ -52,5 +55,5 @@ if __name__ == "__main__":
     vc_filtragemMedia.aplicarFiltro(filename, 5)
     vc_filtragemMedia.aplicarFiltro(filename, 9) """
 
-    vc_gaussian.aplicarFiltro(filename)
+    vc_gama.realce(filename, 1, 2)
     
