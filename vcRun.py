@@ -21,6 +21,7 @@ import vc_pixelSort
 import vc_faceDetect
 import vc_channelShift
 import vc_filtragemMedia
+import vc_filtragemMediana
 import vc_gaussian
 import vc_negativo
 import vc_contraste
@@ -50,10 +51,8 @@ if __name__ == "__main__":
 
     name, extension = os.path.splitext(filename)
     newname = "{name}-ChannelSHift{ext}".format(name=name, ext=extension)
-    cv2.imwrite(newname, img) """
-    """ vc_filtragemMedia.aplicarFiltro(filename, 3)
-    vc_filtragemMedia.aplicarFiltro(filename, 5)
-    vc_filtragemMedia.aplicarFiltro(filename, 9) """
+    cv2.imwrite(newname, img)"""
 
-    vc_gama.realce(filename, 1, 2)
-    
+
+    vc_filtragemMediana.aplicarFiltro(filename, 12) 
+   
