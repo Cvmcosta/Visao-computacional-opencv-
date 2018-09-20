@@ -26,6 +26,10 @@ import vc_gaussian
 import vc_negativo
 import vc_contraste
 import vc_gama
+import vc_realceLinear
+import vc_realceLogaritmico
+import vc_realceQuadratico
+import vc_realceRaizQuadrada
 # Load an color image in grayscale
 
 if __name__ == "__main__":
@@ -54,5 +58,9 @@ if __name__ == "__main__":
     cv2.imwrite(newname, img)"""
 
 
-    vc_filtragemMediana.aplicarFiltro(filename, 12) 
-   
+    vc_realceLinear.realce(filename,2,0)
+    vc_realceLogaritmico.realce(filename)
+    vc_realceQuadratico.realce(filename)
+    vc_realceRaizQuadrada.realce(filename)
+    #vc_contraste.realce(filename,100,255)
+    vc_gama.realce(filename,2.2,1)

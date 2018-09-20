@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import os
 
-def realce(filename, c, gama):
+def realce(filename):
     img = cv2.imread(filename, 0)
 
     rows, cols = img.shape
@@ -12,20 +12,18 @@ def realce(filename, c, gama):
 
     for i in range(rows):
         for j in range (cols):
-            value = c*(((img[i,j]*1.0)/255)**gama)
-            value = value*255
-            if(value>255):
-                value = 255
+            pixel = (img[i,j]**2)/255
+            if(pixel > 255):
+                img[i,j] = 255
             else:
-                img[i,j] = value
-
+                img[i,j] = pixel
+           
 
     
     name, extension = os.path.splitext(filename)
-    newname = "{name}-Gama{ext}".format(name=name,ext=extension)
-    cv2.imshow('gama', img)
+    newname = "{name}-Quadratico{ext}".format(name=name,ext=extension)
+    cv2.imshow('Quadratico', img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
     cv2.imwrite(newname, img)
-    
