@@ -31,10 +31,13 @@ import vc_realceLogaritmico
 import vc_realceQuadratico
 import vc_realceRaizQuadrada
 import vc_Prewitt
+import vc_detectPontos
+import vc_detectRetas
+import vc_Roberts
 # Load an color image in grayscale
 
 if __name__ == "__main__":
-    filename = "imgs/pedro.jpg"
+    filename = "imgs/lenna.jpg"
     filenamesuave = "imgs/pedro-FiltroMedio5.jpg"
     filename2 = "imgs/cat.jpg"
     fator = [4,8] #fator de amostragem
@@ -59,5 +62,5 @@ if __name__ == "__main__":
     newname = "{name}-ChannelSHift{ext}".format(name=name, ext=extension)
     cv2.imwrite(newname, img)"""
 
-
-    vc_Prewitt.detectar(filenamesuave)
+    #vc_Prewitt.detectar(vc_gaussian.aplicarFiltro(filename), 40)
+    vc_Roberts.detectar('imgs/lenna-FiltroGaussiano.jpg', 8)

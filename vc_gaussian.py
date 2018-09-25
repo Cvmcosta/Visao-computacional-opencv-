@@ -29,8 +29,8 @@ def aplicarFiltro(filename):
     name, extension = os.path.splitext(filename)
     newname = "{name}-FiltroGaussiano{ext}".format(name=name,ext=extension)
     cv2.imwrite(newname, img2)
-    cv2.imshow(newname,img2)
-    cv2.waitKey(0)
+   
     cv2.destroyAllWindows()
+    return newname
      
                         

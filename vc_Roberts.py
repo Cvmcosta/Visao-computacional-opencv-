@@ -14,8 +14,8 @@ def detectar(filename, limiar):
     imgn = np.zeros((rows, cols))
     
     
-    mascarax = np.matrix('1 1 1; 0 0 0; -1 -1 -1')
-    mascaray = np.matrix('-1 0 1;-1 0 1; -1 0 1')
+    mascarax = np.matrix('1 0; 0 -1')
+    mascaray = np.matrix('0 -1; 1 0')
     
     
     
@@ -23,22 +23,22 @@ def detectar(filename, limiar):
     
     
     
-    fator = 3//2
+    fator = 2//2
     
     
     for i in range(fator, rows-fator):
         for j in range(fator, cols-fator):
             soma = 0
-            for f in range(3):
-                for n in range(3):
+            for f in range(2):
+                for n in range(2):
                     soma = soma + (img[i+f-fator,j-fator+n]*mascarax[f,n])
             imgx[i,j] = soma
             
     for i in range(fator, rows-fator):
         for j in range(fator, cols-fator):
             soma1 = 0
-            for f in range(3):
-                for n in range(3):
+            for f in range(2):
+                for n in range(2):
                     soma1 = soma1 + (imgx[i+f-fator,j-fator+n]*mascaray[f,n])
             
    
@@ -51,9 +51,9 @@ def detectar(filename, limiar):
 
 
     name, extension = os.path.splitext(filename)
-    newname = "{name}-Prewitt{ext}".format(name=name,ext=extension)
+    newname = "{name}-Roberts{ext}".format(name=name,ext=extension)
     cv2.imwrite(newname, imgn)
-    cv2.imshow('Prewitt',imgn)
+    cv2.imshow('Roberts',imgn)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
      
