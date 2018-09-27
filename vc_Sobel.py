@@ -13,8 +13,8 @@ def detectar(filename, limiar):
     imgn = np.zeros((rows, cols))
     
     
-    mascarax = np.matrix('1 1 1; 0 0 0; -1 -1 -1')
-    mascaray = np.matrix('-1 0 1;-1 0 1; -1 0 1')
+    mascarax = np.matrix('-1 0 1; -2 0 2; -1 0 1')
+    mascaray = np.matrix('-1 -2 -1;0 0 0; 1 2 1')
     
     
     
@@ -37,13 +37,16 @@ def detectar(filename, limiar):
                 imgn[i,j]=0
             else:
                 imgn[i,j]=255
+           
+   
+   
     
 
 
     name, extension = os.path.splitext(filename)
-    newname = "{name}-Prewitt{ext}".format(name=name,ext=extension)
+    newname = "{name}-Sobel{ext}".format(name=name,ext=extension)
     cv2.imwrite(newname, imgn)
-    cv2.imshow('Prewitt',imgn)
+    cv2.imshow('Sobel',imgn)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
      

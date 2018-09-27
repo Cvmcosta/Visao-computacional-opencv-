@@ -9,8 +9,7 @@ def detectar(filename, limiar):
     #Importa imagem
     img = cv2.imread(filename, 0)
     rows, cols = img.shape
-    imgx = np.zeros((rows, cols))
-    imgy = np.zeros((rows, cols))
+    
     imgn = np.zeros((rows, cols))
     
     
@@ -29,20 +28,12 @@ def detectar(filename, limiar):
     for i in range(fator, rows-fator):
         for j in range(fator, cols-fator):
             soma = 0
-            for f in range(2):
-                for n in range(2):
-                    soma = soma + (img[i+f-fator,j-fator+n]*mascarax[f,n])
-            imgx[i,j] = soma
-            
-    for i in range(fator, rows-fator):
-        for j in range(fator, cols-fator):
             soma1 = 0
             for f in range(2):
                 for n in range(2):
-                    soma1 = soma1 + (imgx[i+f-fator,j-fator+n]*mascaray[f,n])
-            
-   
-            if(soma1<limiar):
+                    soma = soma + (img[i+f-fator,j-fator+n]*mascarax[f,n])
+                    soma1 = soma1 + (img[i+f-fator,j-fator+n]*mascaray[f,n])
+            if(abs(soma)+abs(soma1)<limiar):
                 imgn[i,j]=0
             else:
                 imgn[i,j]=255
